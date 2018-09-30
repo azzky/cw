@@ -134,7 +134,7 @@ ul .icon:hover {
   -o-transform: scale(1.2) !important;
 }
 
-ul {
+#menu {
   position: fixed;
   z-index: 1;
   top: 0;
@@ -231,6 +231,7 @@ a {
 .column {display: flex;flex-direction: column;justify-content: center;align-items: center;}
 .row {display: flex;flex-direction: row;justify-content: center;align-items: center;}
 .icon .pre {max-width: 490px}
+input {border: none;padding: 10px;}
 textarea {
 	width: 300px;
 	height: 191px;
@@ -240,11 +241,31 @@ textarea {
 }
 button {
 	width: 220px;
-padding: 30px;
-background: burlywood;
-border: none;
-margin: 15px 0;
-cursor: pointer;
-color: #fff;
-text-transform: uppercase;
+	padding: 30px;
+	background: burlywood;
+	border: none;
+	margin: 15px 0;
+	cursor: pointer;
+	color: #fff;
+	text-transform: uppercase;
+	transition: .7s;
+}
+button:hover {
+	box-shadow: #444 5px 5px;
+	transition: .7s;
+}
+
+
+.toasty{
+  position: absolute;
+  left: 110%;
+  bottom:0;
+}
+.animateIn{
+  animation: 2s left forwards ease;
+}
+@keyframes left {
+    0% {left: 110%;}
+    50% {left: 80%;}
+  100%{left: 110%;}
 }

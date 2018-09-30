@@ -5,7 +5,7 @@
 	<title>Куликов Н.Д. - контрольная</title>
 	<meta charset="utf-8">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<script src="approx.js"></script>
 </head>
@@ -46,15 +46,21 @@
 	      <div class="ct" id="t4">
 	         <div class="ct" id="t5">
 	          <ul id="menu">
-	            <a href="#t1"><li class="icon fa fa-bolt" id="uno"></li></a>
+	            <a href="#t1"><li class="icon fa fa-home" id="uno"></li></a>
 	            <a href="#t2"><li class="icon fa fa-keyboard-o" id="dos"></li></a>
-	            <a href="#t3"><li class="icon fa fa-rocket" id="tres"></li></a>
-	            <a href="#t4"><li class="icon fa fa-dribbble" id="cuatro"></li></a>
+	            <a href="#t3"><li class="icon fa fa-key" id="tres"></li></a>
+	            <a href="#t4"><li class="icon fa fa-television" id="cuatro"></li></a>
 	          </ul>
 	          <div class="page" id="p1">
-	             <section class="icon column">
-	               
-	            </section>  
+	            <section class="icon column">
+	                <h2>Control Work</h2>
+	                <p>by Kulikov Nikita (z-1651)</p>
+	                <ul>
+	                	<li>Approximation</li>
+	                	<li>RSA Encryption</li>
+	                	<li>Entropy</li>
+	                </ul>
+	            </section>
 	          </div>
 	          <div class="page" id="p2">
 	            <section class="icon column">
@@ -73,19 +79,35 @@
 	          </div>  
 	          <div class="page" id="p3">
 	            <section class="icon column">
-	              <div class="row">
-					<textarea id="z3source"></textarea>
-					<div class="column">
-						<input type="text" name="key" id="z3key" value="">
-						<button onclick="encr();">Зашифровать</button>
+	            	<h2>RSA Encryption</h2>
+	              	<h4>Type your text here</h4>
+		            <div class="row">
+						<textarea id="z3source"></textarea>
+						<div class="column">
+							<textarea id="z3key" style="width: 120px;height: 50px;"></textarea>
+							<button onclick="encr();">Encrypt</button>
+						</div>
+						<textarea id="z3result"></textarea>
 					</div>
-					<textarea id="z3result"></textarea>
-				</div>
 	            </section>
 	          </div>
 	          <div class="page" id="p4">
 	            <section class="icon column">
-	              
+	            	<h2>Entropy</h2>
+	                <input type="text" id="source" />
+					<button onclick="info();">calculate</button>
+					<div class="row">
+						<label for="max">H(max) = </label>
+						<input type="text" id="max" />
+					</div>
+					<div class="row">
+						<label for="avg">H(avg) = </label>
+						<input type="text" id="avg" />
+					</div>
+					<div class="row">
+						<label for="redundancy">Redundancy = </label>
+						<input type="text" id="redundancy" />
+					</div>
 	            </section>
 	          </div>
 	        </div>
@@ -93,5 +115,6 @@
 	    </div>
 	  </div>
 	</div>
+	<img class='toasty' src='https://stickerboom.ru/files/2014/11/13/1735x03a8-300x300.png'>
 </body>
 </html>

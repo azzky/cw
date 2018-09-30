@@ -3,8 +3,7 @@ if(!firsttime) {
   window.localStorage.setItem('firsttime', '1');
   setTimeout( "$('header').addClass('loading');",1);
   setTimeout( "$('header').addClass('loaded');",2000);
-} else {}
-
+}
 function appr1() {
     var text = $('#appr1').val();
     var dict = jQuery.unique( (text + ' ').split('') );
@@ -42,7 +41,6 @@ function appr1() {
     }
     $('#apprresult').text(resultSet);
 }
-
 function appr2() {
     var text = $('#appr1').val();
     var dict = jQuery.unique( (text + ' ').split('') );
@@ -89,7 +87,6 @@ function appr2() {
     }
     $('#apprresult').text(resultSet);
 }
-
 function appr3() {
     var text = $('#appr1').val();
     var dict = jQuery.unique( (text + ' ').split('') );
@@ -162,11 +159,8 @@ function encr() {
     var encrypted = Monika.encryptMessage(source);
     $('#z3key').val(encrypted);
     var decrypted = ThatBoldGuy.decryptMessage(encrypted);
-    $('#z3result').val(decrypted);   
-    
+    $('#z3result').val(decrypted);    
 }
-
-
 function Client(p, g) {
     this.p = p;
     this.g = g;
@@ -193,4 +187,75 @@ function Client(p, g) {
         }
         return result;
     }
+}
+function info() {
+  var probabilities = $('#source').val().split(' ');
+  
+  var numeric_probs = [];
+  for (var i = 0; i < probabilities.length; i++) {
+    numeric_probs[i] = parseFloat(probabilities[i]);
+  }
+  
+  var min = Math.min.apply(Math, numeric_probs);
+  
+  var Hmax = -1 * Math.log2(min);
+  
+  var Havg = 0;
+  for (var i = 0; i < numeric_probs.length; i++) {
+    Havg += numeric_probs[i] * Math.log2(numeric_probs[i]);
+  }
+  Havg *= -1;
+  
+  var redundancy = (Hmax - Havg) / Hmax;
+  
+  $('#max').val(Hmax);
+  $('#avg').val(Havg);
+  $('#redundancy').val(redundancy);
+}
+
+// a key map of allowed keys
+var allowedKeys = {
+  89: 'y',
+  79: 'o',
+  66: 'b',
+  65: 'a'
+};
+
+// the 'official' Konami Code sequence
+var konamiCode = ['y', 'o', 'b', 'a'];
+
+// a variable to remember the 'position' the user has reached so far.
+var konamiCodePosition = 0;
+
+// add keydown event listener
+document.addEventListener('keydown', function(e) {
+  // get the value of the key code from the key map
+  var key = allowedKeys[e.keyCode];
+  // get the value of the required key from the konami code
+  var requiredKey = konamiCode[konamiCodePosition];
+
+  // compare the key with the required key
+  if (key == requiredKey) {
+
+    // move to the next key in the konami code sequence
+    konamiCodePosition++;
+
+    // if the last key is reached, activate cheats
+    if (konamiCodePosition == konamiCode.length) {
+      activateCheats();
+      konamiCodePosition = 0;
+    }
+  } else {
+    konamiCodePosition = 0;
+  }
+});
+
+function activateCheats() {
+
+  var audio = new Audio('https://s3-eu-west-1.amazonaws.com/wdildnproject2/toasty.mp3');
+  audio.play();
+  
+  $('.toasty').addClass('animateIn');
+  setTimeout(function(){ $('.toasty').removeClass('animateIn');
+}, 3500);
 }
